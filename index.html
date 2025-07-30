@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برامج كحلاوي حسين التدريبية السريعة</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #f97316;
+            --success-color: #10b981;
+            --accent-color: #8b5cf6;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+        }
+
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="1" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .trainer-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: none;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-header {
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            position: relative;
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .program-body {
+            padding: 30px;
+        }
+
+        .day-item {
+            background: var(--bg-light);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-right: 4px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .day-item:hover {
+            background: #e0f2fe;
+            transform: translateX(-5px);
+        }
+
+        .day-number {
+            background: var(--secondary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+
+        .goal-badge {
+            background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .prerequisites {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .outcome-section {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, var(--text-dark) 0%, #374151 100%);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--secondary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0;
+            }
+            
+            .program-card {
+                margin-bottom: 20px;
+            }
+            
+            .trainer-card {
+                margin-top: 20px;
+                padding: 20px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4 fade-in">برامج التدريب السريع</h1>
+                    <h2 class="h3 mb-4 fade-in">مسارات تعلم متقدمة في أسبوع واحد</h2>
+                    <p class="lead mb-4 fade-in">اكتسب مهارات تقنية متقدمة في وقت قياسي مع برامج تدريبية مكثفة ومصممة خصيصاً للمحترفين</p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="trainer-card fade-in">
+                        <div class="text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-user-tie fa-4x mb-3"></i>
+                            </div>
+                            <h4 class="fw-bold">كحلاوي حسين</h4>
+                            <p class="mb-3">مدرب ومطور برمجيات محترف</p>
+                            <div class="contact-item justify-content-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <span>kahlawy@gmail.com</span>
+                            </div>
+                            <div class="contact-item justify-content-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <span>+966503054025</span>
+                            </div>
+                            <div class="contact-item justify-content-center">
+                                <div class="contact-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <span>linkedin.com/in/kahlawy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title h2 fw-bold text-center fade-in">نبذة عن المدرب</h2>
+                    <div class="card border-0 shadow-lg fade-in">
+                        <div class="card-body p-5">
+                            <p class="lead text-center mb-4">
+                                كحلاوي حسين هو مطور برمجيات محترف ومدير مشاريع تقنية ذو خبرة تزيد عن 20 عاماً في تطوير التطبيقات المؤسسية وقيادة الفرق التقنية عالية الأداء. 
+                                يتخصص في ربط الاستراتيجيات التقنية بالأهداف التجارية وإدارة دورة حياة تطوير البرمجيات الكاملة.
+                            </p>
+                            <div class="row text-center">
+                                <div class="col-md-4 mb-3">
+                                    <div class="p-3">
+                                        <i class="fas fa-certificate fa-2x text-primary mb-2"></i>
+                                        <h5>PMP معتمد</h5>
+                                        <p class="text-muted">إدارة المشاريع الاحترافية</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="p-3">
+                                        <i class="fas fa-code fa-2x text-success mb-2"></i>
+                                        <h5>PMI-ACP معتمد</h5>
+                                        <p class="text-muted">الممارس المعتمد للمنهجيات الرشيقة</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="p-3">
+                                        <i class="fas fa-chalkboard-teacher fa-2x text-warning mb-2"></i>
+                                        <h5>MCT معتمد</h5>
+                                        <p class="text-muted">مدرب تقني معتمد من مايكروسوفت</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title h2 fw-bold text-center text-white fade-in">البرامج التدريبية</h2>
+            
+            <!-- .NET Core Program -->
+            <div class="program-card fade-in">
+                <div class="program-header">
+                    <div class="program-icon">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h3 class="fw-bold mb-2">مسار مطور .NET Core السريع</h3>
+                    <p class="mb-0">تعلم تطوير تطبيقات الويب باستخدام ASP.NET Core في أسبوع واحد</p>
+                </div>
+                <div class="program-body">
+                    <div class="prerequisites">
+                        <h5 class="fw-bold mb-3"><i class="fas fa-tools me-2"></i>المتطلبات المسبقة</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>.NET SDK (6 أو 7)</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Visual Studio 2022 أو Visual Studio Code</li>
+                            <li><i class="fas fa-check text-success me-2"></i>SQL Server أو SQL LocalDB</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Postman لاختبار APIs</li>
+                        </ul>
+                    </div>
+
+                    <h5 class="fw-bold mb-3">الجدول التدريبي</h5>
+                    
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">1</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">أساسيات C# و .NET Core</h6>
+                                <p class="mb-0 text-muted">مفاهيم .NET Core الأساسية والفرق بين .NET Framework و .NET Core</p>
+                                <div class="goal-badge">الهدف: إتقان المفاهيم الأساسية وأدوات التطوير</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">2</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">بناء تطبيق ويب بـ ASP.NET Core MVC</h6>
+                                <p class="mb-0 text-muted">هيكل المشروع وتنفيذ عمليات CRUD الأساسية</p>
+                                <div class="goal-badge">الهدف: بناء صفحات ويب ديناميكية</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">3</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Entity Framework Core و SQL Server</h6>
+                                <p class="mb-0 text-muted">إنشاء نماذج البيانات والهجرات والعلاقات</p>
+                                <div class="goal-badge">الهدف: دمج الوصول للبيانات باستخدام EF Core</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">4</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">بناء RESTful Web API</h6>
+                                <p class="mb-0 text-muted">إنشاء Controllers وتنفيذ endpoints واختبارها</p>
+                                <div class="goal-badge">الهدف: تطوير APIs للتكامل مع العملاء</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">5</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">المصادقة والنشر</h6>
+                                <p class="mb-0 text-muted">ASP.NET Core Identity وحماية التطبيقات والنشر</p>
+                                <div class="goal-badge">الهدف: تأمين ونشر التطبيق للإنتاج</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-section">
+                        <h5 class="fw-bold mb-3"><i class="fas fa-trophy me-2"></i>النتائج المتوقعة</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-star text-warning me-2"></i>تطوير تطبيقات ASP.NET Core MVC</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>بناء واستهلاك Web APIs مع EF Core</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>تأمين ونشر تطبيقات الويب</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>استخدام الأدوات والممارسات الحديثة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OOP & DDD Program -->
+            <div class="program-card fade-in">
+                <div class="program-header" style="background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%);">
+                    <div class="program-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="fw-bold mb-2">مسار OOP و DDD السريع</h3>
+                    <p class="mb-0">فهم البرمجة كائنية التوجه والتصميم المدفوع بالمجال</p>
+                </div>
+                <div class="program-body">
+                    <div class="prerequisites">
+                        <h5 class="fw-bold mb-3"><i class="fas fa-tools me-2"></i>المتطلبات المسبقة</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>فهم أساسي لمفاهيم البرمجة</li>
+                            <li><i class="fas fa-check text-success me-2"></i>معرفة بـ C# أو Java</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Visual Studio أو JetBrains Rider</li>
+                        </ul>
+                    </div>
+
+                    <h5 class="fw-bold mb-3">الجدول التدريبي</h5>
+                    
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">1</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">أساسيات البرمجة كائنية التوجه</h6>
+                                <p class="mb-0 text-muted">الأركان الأربعة للـ OOP والواجهات والفئات المجردة</p>
+                                <div class="goal-badge">الهدف: فهم وتطبيق أساسيات OOP</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">2</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">مفاهيم OOP المتقدمة</h6>
+                                <p class="mb-0 text-muted">مبادئ SOLID وأنماط التصميم الأساسية</p>
+                                <div class="goal-badge">الهدف: تعلم ممارسات الكود النظيف</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">3</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">مقدمة في التصميم المدفوع بالمجال</h6>
+                                <p class="mb-0 text-muted">مفاهيم DDD والمجالات والسياقات المحدودة</p>
+                                <div class="goal-badge">الهدف: فهم قوي لنظرية ومصطلحات DDD</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">4</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">تطبيق DDD في الكود - الجزء الأول</h6>
+                                <p class="mb-0 text-muted">نمذجة Aggregates وValue Objects والمستودعات</p>
+                                <div class="goal-badge">الهدف: ترجمة مفاهيم المجال لتصميم عملي</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">5</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">تطبيق DDD في الكود - الجزء الثاني</h6>
+                                <p class="mb-0 text-muted">تنفيذ مجال صغير واختبار نموذج المجال</p>
+                                <div class="goal-badge">الهدف: دمج منطق المجال في كود نظيف وقابل للاختبار</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-section">
+                        <h5 class="fw-bold mb-3"><i class="fas fa-trophy me-2"></i>النتائج المتوقعة</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-star text-warning me-2"></i>تطبيق مبادئ OOP لتصميم كود نظيف وقابل للتوسع</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>فهم وتنفيذ مفاهيم التصميم المدفوع بالمجال</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>بناء تطبيقات منظمة تعكس نماذج المجال الحقيقية</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>استخدام أنماط وممارسات DDD الشائعة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI/ML Program -->
+            <div class="program-card fade-in">
+                <div class="program-header" style="background: linear-gradient(135deg, var(--accent-color) 0%, #7c3aed 100%);">
+                    <div class="program-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="fw-bold mb-2">مسار الذكاء الاصطناعي والتعلم الآلي السريع</h3>
+                    <p class="mb-0">أساسيات AI وML والتعلم العميق باستخدام Python</p>
+                </div>
+                <div class="program-body">
+                    <div class="prerequisites">
+                        <h5 class="fw-bold mb-3"><i class="fas fa-tools me-2"></i>المتطلبات المسبقة</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>معرفة أساسية ببرمجة Python</li>
+                            <li><i class="fas fa-check text-success me-2"></i>فهم الرياضيات الأساسية</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Jupyter Notebook أو Google Colab</li>
+                            <li><i class="fas fa-check text-success me-2"></i>مكتبات Python: NumPy, Pandas, Scikit-learn</li>
+                        </ul>
+                    </div>
+
+                    <h5 class="fw-bold mb-3">الجدول التدريبي</h5>
+                    
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">1</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">مقدمة في AI و Python لعلوم البيانات</h6>
+                                <p class="mb-0 text-muted">نظرة عامة على AI وML وDL ومعالجة البيانات</p>
+                                <div class="goal-badge">الهدف: بناء أساس قوي في Python ومفاهيم AI</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">2</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">أساسيات التعلم الآلي</h6>
+                                <p class="mb-0 text-muted">التعلم المراقب وغير المراقب ونماذج التصنيف والانحدار</p>
+                                <div class="goal-badge">الهدف: فهم وتطبيق خوارزميات ML الأساسية</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">3</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">تقييم وضبط النماذج</h6>
+                                <p class="mb-0 text-muted">مقاييس الأداء وضبط المعاملات وهندسة الميزات</p>
+                                <div class="goal-badge">الهدف: تقييم وتحسين نماذج ML بفعالية</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">4</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">مقدمة في التعلم العميق</h6>
+                                <p class="mb-0 text-muted">أساسيات الشبكات العصبية وبناء النماذج</p>
+                                <div class="goal-badge">الهدف: فهم الشبكات العصبية وبناء أول نموذج DL</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">5</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">الشبكات العصبية التطبيقية (CNNs)</h6>
+                                <p class="mb-0 text-muted">تصنيف الصور والتعلم بالنقل</p>
+                                <div class="goal-badge">الهدف: بناء نماذج CNN لمهام الرؤية الحاسوبية</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-section">
+                        <h5 class="fw-bold mb-3"><i class="fas fa-trophy me-2"></i>النتائج المتوقعة</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-star text-warning me-2"></i>فهم أساسيات AI وML والتعلم العميق</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>تنفيذ نماذج ML والشبكات العصبية الأساسية</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>العمل مع مجموعات البيانات الحقيقية</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>بناء ونشر حلول AI باستخدام Python</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PMP Program -->
+            <div class="program-card fade-in">
+                <div class="program-header" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">
+                    <div class="program-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="fw-bold mb-2">مسار التحضير لشهادة PMP® السريع</h3>
+                    <p class="mb-0">التحضير المكثف لامتحان إدارة المشاريع الاحترافية</p>
+                </div>
+                <div class="program-body">
+                    <div class="prerequisites">
+                        <h5 class="fw-bold mb-3"><i class="fas fa-tools me-2"></i>المتطلبات المسبقة</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>خبرة 3-5 سنوات في إدارة المشاريع</li>
+                            <li><i class="fas fa-check text-success me-2"></i>معرفة بمفاهيم إدارة المشاريع الأساسية</li>
+                            <li><i class="fas fa-check text-success me-2"></i>كتاب التحضير لامتحان PMP</li>
+                            <li><i class="fas fa-check text-success me-2"></i>محاكي امتحان PMP</li>
+                        </ul>
+                    </div>
+
+                    <h5 class="fw-bold mb-3">الجدول التدريبي</h5>
+                    
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">1</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">نظرة عامة على امتحان PMP ومجال الأشخاص</h6>
+                                <p class="mb-0 text-muted">هيكل الامتحان وبناء الفرق وإشراك أصحاب المصلحة</p>
+                                <div class="goal-badge">الهدف: فهم هيكل الامتحان ومجال الأشخاص (42%)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">2</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">مجال العمليات - الجزء الأول</h6>
+                                <p class="mb-0 text-muted">عمليات البدء والتخطيط وإدارة النطاق والجدولة</p>
+                                <div class="goal-badge">الهدف: إتقان أنشطة التخطيط الأساسية</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">3</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">مجال العمليات - الجزء الثاني</h6>
+                                <p class="mb-0 text-muted">عمليات التنفيذ والمراقبة وإدارة الأداء</p>
+                                <div class="goal-badge">الهدف: تعميق فهم تنفيذ ومراقبة المشاريع</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">4</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">مجال البيئة التجارية والتركيز على Agile</h6>
+                                <p class="mb-0 text-muted">الامتثال وإدارة التغيير ومبادئ Agile</p>
+                                <div class="goal-badge">الهدف: فهم السياق التجاري والمنهجيات الرشيقة</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">5</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">امتحانات تجريبية ومراجعة نهائية</h6>
+                                <p class="mb-0 text-muted">امتحانات محاكاة وتقوية النقاط الضعيفة</p>
+                                <div class="goal-badge">الهدف: محاكاة بيئة الامتحان وتعزيز الاستعداد</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-section">
+                        <h5 class="fw-bold mb-3"><i class="fas fa-trophy me-2"></i>النتائج المتوقعة</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-star text-warning me-2"></i>فهم جميع مجالات امتحان PMP الثلاثة</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>الإلمام بالمناهج الرشيقة والهجينة والتنبؤية</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>حل الأسئلة الموقفية والحسابية</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>الاستعداد والثقة لاجتياز امتحان شهادة PMP</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PMI-ACP Program -->
+            <div class="program-card fade-in">
+                <div class="program-header" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                    <div class="program-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="fw-bold mb-2">مسار التحضير لشهادة PMI-ACP® السريع</h3>
+                    <p class="mb-0">التحضير المكثف لشهادة الممارس المعتمد للمنهجيات الرشيقة</p>
+                </div>
+                <div class="program-body">
+                    <div class="prerequisites">
+                        <h5 class="fw-bold mb-3"><i class="fas fa-tools me-2"></i>المتطلبات المسبقة</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>خبرة سابقة في Agile</li>
+                            <li><i class="fas fa-check text-success me-2"></i>معرفة بـ Scrum وKanban وXP وLean</li>
+                            <li><i class="fas fa-check text-success me-2"></i>كتاب التحضير لامتحان PMI-ACP</li>
+                            <li><i class="fas fa-check text-success me-2"></i>أسئلة تدريبية أو محاكي</li>
+                        </ul>
+                    </div>
+
+                    <h5 class="fw-bold mb-3">الجدول التدريبي</h5>
+                    
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">1</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">مبادئ وعقلية Agile</h6>
+                                <p class="mb-0 text-muted">بيان Agile والمبادئ الـ12 والقيادة الخادمة</p>
+                                <div class="goal-badge">الهدف: إرساء أساس قوي في قيم وفلسفة Agile</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">2</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">التسليم المدفوع بالقيمة</h6>
+                                <p class="mb-0 text-muted">أولوية قيمة العميل والتسليم التدريجي والتخطيط التكيفي</p>
+                                <div class="goal-badge">الهدف: التركيز على تسليم القيمة مبكراً ومستمراً</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">3</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">إشراك أصحاب المصلحة وأداء الفريق</h6>
+                                <p class="mb-0 text-muted">التخطيط التعاوني وبناء فرق Agile عالية الأداء</p>
+                                <div class="goal-badge">الهدف: تطوير مهارات التعاون الفعال</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">4</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">التخطيط التكيفي والتحسين المستمر</h6>
+                                <p class="mb-0 text-muted">تتبع التقدم والتقدير في Agile وتقنيات التحسين</p>
+                                <div class="goal-badge">الهدف: إتقان التخطيط والتحسين في بيئة متغيرة</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-item">
+                        <div class="d-flex align-items-center">
+                            <div class="day-number">5</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">مراجعة شاملة وامتحانات تجريبية</h6>
+                                <p class="mb-0 text-muted">مراجعة جميع المجالات وحل امتحانات محاكاة</p>
+                                <div class="goal-badge">الهدف: الاستعداد النهائي لامتحان PMI-ACP</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-section">
+                        <h5 class="fw-bold mb-3"><i class="fas fa-trophy me-2"></i>النتائج المتوقعة</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-star text-warning me-2"></i>إتقان مبادئ وممارسات Agile المتقدمة</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>فهم عميق لمنهجيات Scrum وKanban وXP وLean</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>مهارات قيادة وتسهيل فرق Agile</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>الاستعداد لاجتياز امتحان شهادة PMI-ACP</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-title h2 fw-bold mb-5 text-white fade-in">تواصل معنا</h2>
+                    <div class="row justify-content-center">
+                        <div class="col-md-4 mb-4 fade-in">
+                            <div class="contact-item justify-content-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">البريد الإلكتروني</h5>
+                                    <p>kahlawy@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 fade-in">
+                            <div class="contact-item justify-content-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">الهاتف</h5>
+                                    <p>+966503054025</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 fade-in">
+                            <div class="contact-item justify-content-center">
+                                <div class="contact-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">لينكد إن</h5>
+                                    <p>linkedin.com/in/kahlawy</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Fade in animation on scroll
+            function fadeInOnScroll() {
+                $('.fade-in').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var elementBottom = elementTop + $(this).outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+                    
+                    if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                        $(this).addClass('visible');
+                    }
+                });
+            }
+
+            // Initial fade in
+            fadeInOnScroll();
+
+            // Fade in on scroll
+            $(window).scroll(function() {
+                fadeInOnScroll();
+                
+                // Show/hide scroll to top button
+                if ($(this).scrollTop() > 300) {
+                    $('#scrollToTop').addClass('show');
+                } else {
+                    $('#scrollToTop').removeClass('show');
+                }
+            });
+
+            // Scroll to top functionality
+            $('#scrollToTop').click(function() {
+                $('html, body').animate({scrollTop: 0}, 800);
+            });
+
+            // Smooth scrolling for anchor links
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - 80
+                    }, 1000);
+                }
+            });
+
+            // Add hover effects to program cards
+            $('.program-card').hover(
+                function() {
+                    $(this).find('.program-header').css('transform', 'scale(1.02)');
+                },
+                function() {
+                    $(this).find('.program-header').css('transform', 'scale(1)');
+                }
+            );
+
+            // Add click animation to day items
+            $('.day-item').click(function() {
+                $(this).addClass('clicked');
+                setTimeout(() => {
+                    $(this).removeClass('clicked');
+                }, 200);
+            });
+        });
+    </script>
+
+    <style>
+        .clicked {
+            transform: scale(0.98) !important;
+            transition: transform 0.1s ease !important;
+        }
+        
+        .program-header {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</body>
+</html>
